@@ -23,12 +23,12 @@ def data_ingestion():
     text_splitter = RecursiveCharacterTextSplitter(chunk_size=1000, chunk_overlap=1000)
     text_splitter.split.documents(documents)
 
-    docs = text_splititer.split_documents(documents)
+    docs = text_splitter.split_documents(documents)
 
     return docs
 
 def get_vector_store(docs):
-    vector_store_faiss=FAISS.from_document(docs,bedrock_embeddings)
+    vector_store_faiss=FAISS.from_documents(docs,bedrock_embeddings)
     vector_store_faiss.save_local("faiss_index")
 
 if __name__ == "__main__":
